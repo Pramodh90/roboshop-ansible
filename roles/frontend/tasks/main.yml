@@ -27,3 +27,9 @@
     name: common
     tasks_from: download
 
+- name: start nginx service
+  ansible.builtin.systemd:
+    name: nginx
+    state: started
+    enable: yes
+
