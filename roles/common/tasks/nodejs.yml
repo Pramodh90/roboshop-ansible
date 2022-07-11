@@ -1,0 +1,29 @@
+  PRINT "Setting Up NodeJS YUM Repo"
+    curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${LOG}
+    CHECK_STAT $?
+    
+    PRINT "Installing NodeJS"
+    yum install nodejs -y &>>${LOG}
+    CHECK_STAT $?
+    
+    APP_COMMON_SETUP
+    
+    PRINT "Install NodeJS Dependencies for ${COMPONENT} Component"
+    mv ${COMPONENT}-main ${COMPONENT} && cd ${COMPONENT} && npm install &>>${LOG}
+    CHECK_STAT $?
+    
+    SYSTEMD
+  }
+
+- name: Setup YUM repo fpr nodejs
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: Installing nodeJS
+  ansible.builtin.yum:
+     name: nodejs
+     state: installed
+
+- name: Import common role for downlaod
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download
