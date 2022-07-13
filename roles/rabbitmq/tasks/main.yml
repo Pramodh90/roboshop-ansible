@@ -22,7 +22,7 @@
 - name: Create Roboshop user in rabbitmq
   community.rabbitmq.rabbitmq_user:
     user: roboshop
-    password: {{RABBITMQ_USER_PASSWORD}}
+    password: {{ RABBITMQ_USER_PASSWORD }}
     vhost: /
     configure_priv: .*
     read_priv: .*
