@@ -15,9 +15,9 @@
 
 - name: Start RabbitMQ Service
   ansible.builtin.systemd:
-    - name: rabbitmq-server
-      state: started
-      enabled: yes
+    name: rabbitmq-server
+    state: started
+    enabled: yes
 
 - name: Create Roboshop user in rabbitmq
   community.rabbitmq.rabbitmq_user:
