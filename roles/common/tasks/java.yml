@@ -13,7 +13,7 @@
   args:
     chdir: /home/roboshop/{{COMPONENT}}
 
-    - name: SystemD Setup for {{ COMPONENT }} Service
-      ansible.builtin.include_role:
-        name: common
-        tasks_from: systemd
+- name: SystemD Setup for {{ COMPONENT }} Service
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd
